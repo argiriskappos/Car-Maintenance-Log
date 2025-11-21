@@ -1,0 +1,36 @@
+<%# Where the Header goes %>
+<%- include('../partials/header') %>
+
+<%# Title %>
+<h1 class="mb-3">Maintenance Records</h1>
+
+<table class="table table-hover">
+  <thead>
+    <%# The Header Actions%>
+    <tr>
+      <th>Service</th>
+      <th>Date</th>
+      <th>Cost</th>
+      <th>Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+
+    <% records.forEach(r => { %>
+      <tr>
+        <td><a href="/records/<%= r._id %>"><%= r.serviceType %></a></td>
+        <td><%= r.serviceDate.toISOString().slice(0,10) %></td>
+        <td>$<%= r.cost %></td>
+        <td>
+          <a href="/records/<%= r._id %>/edit" class="btn btn-sm btn-secondary">Edit</a>
+          <form action="/records/<%= r._id %>?_method=DELETE" method="POST" style="display:inline;" onsubmit="return confirmDelete(event)">
+            <button class="btn btn-sm btn-danger">Delete</button>
+          </form>
+        </td>
+      </tr>
+    <% }) %>
+  </tbody>
+</table>
+
+<%# Footer
+<%- include('../partials/footer') %>
