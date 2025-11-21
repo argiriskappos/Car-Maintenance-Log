@@ -1,0 +1,43 @@
+/* General spacing */
+body {
+  padding-bottom: 60px;
+}
+
+/* Make forms look cleaner */
+form .mb-3 label {
+  font-weight: 600;
+}
+
+/* Make table rows highlight on hover */
+table.table tbody tr:hover {
+  background-color: #f2f2f2;
+}
+
+/* Card styling on show page */
+.card {
+  border-radius: 10px;
+}
+
+/* Buttons spacing */
+.btn {
+  margin-right: 5px;
+}
+
+/* Center homepage hero */
+.home-hero {
+  margin-top: 60px;
+  text-align: center;
+}
+
+/* Custom heading size for homepage */
+.home-hero h1 {
+  font-size: 3rem;
+  font-weight: bold;
+}
+
+/* Ensure footer stays clean */
+footer {
+  margin-top: 30px;
+  text-align: center;
+  color: #777;
+}
