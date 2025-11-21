@@ -1,0 +1,43 @@
+<%- include('../partials/header') %>
+
+<%# Edit Maintenance Record %>
+<h2>Edit Maintenance Record</h2>
+
+<form action="/records/<%= record._id %>?_method=PUT" method="POST">
+    
+  <%# Service Type %>
+  <div class="mb-3">
+    <label>Service Type</label>
+    <input class="form-control" name="record[serviceType]" value="<%= record.serviceType %>" required>
+  </div>
+  
+  <%# Date of Maintenance %>
+  <div class="mb-3">
+    <label>Date</label>
+    <input type="date" class="form-control" name="record[serviceDate]" value="<%= record.serviceDate.toISOString().slice(0,10) %>" required>
+  </div>
+  
+  <%# Cost of Maintenance %>
+  <div class="mb-3">
+    <label>Cost</label>
+    <input type="number" class="form-control" name="record[cost]" value="<%= record.cost %>" required>
+  </div>
+
+  <%# Location of Maintenance %>
+  <div class="mb-3">
+    <label>Location</label>
+    <input class="form-control" name="record[location]" value="<%= record.location %>">
+  </div>
+
+  <%# Notes about Maintenance %>
+  <div class="mb-3">
+    <label>Notes</label>
+    <textarea class="form-control" name="record[notes]"><%= record.notes %></textarea>
+  </div>
+
+  <button class="btn btn-primary">Update</button>
+  <a href="/records/<%= record._id %>" class="btn btn-secondary">Cancel</a>
+
+</form>
+
+<%- include('../partials/footer') %>
