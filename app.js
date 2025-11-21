@@ -7,6 +7,8 @@ const connectDB = require('./config/db');
 const app = express();
 
 // Connect to MongoDB
+const connectDB = require("./config/db");
+
 connectDB();
 
 // View engine
@@ -31,3 +33,4 @@ app.use((req, res) => {
 app.listen(process.env.PORT || 3000, () =>
   console.log("Server running on port 3000")
 );
+
