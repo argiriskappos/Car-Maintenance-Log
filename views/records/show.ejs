@@ -1,0 +1,27 @@
+<%- include('../partials/header') %>
+
+<%# Show Maintenance Record %>
+<h2>Maintenance Record Details</h2>
+
+<div class="card mt-3">
+  <div class="card-body">
+    <h4 class="card-title"><%= record.serviceType %></h4>
+
+    <p><strong>Date:</strong> <%= record.serviceDate.toISOString().slice(0,10) %></p>
+    <p><strong>Cost:</strong> $<%= record.cost %></p>
+    <p><strong>Location:</strong> <%= record.location || 'N/A' %></p>
+    <p><strong>Notes:</strong> <%= record.notes || 'No notes provided' %></p>
+
+    <div class="mt-3">
+      <a href="/records/<%= record._id %>/edit" class="btn btn-warning">Edit</a>
+
+      <form action="/records/<%= record._id %>?_method=DELETE" method="POST" style="display:inline;" onsubmit="return confirmDelete(event)">
+        <button class="btn btn-danger">Delete</button>
+      </form>
+
+      <a href="/records" class="btn btn-secondary">Back to List</a>
+    </div>
+  </div>
+</div>
+
+<%- include('../partials/footer') %>
