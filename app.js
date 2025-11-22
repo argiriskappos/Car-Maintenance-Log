@@ -1,15 +1,3 @@
-require('dotenv').config();
-const express = require('express');
-const path = require('path');
-const methodOverride = require('method-override');
-const connectDB = require('./config/db');
-
-const app = express();
-
-// Connect to MongoDB
-const connectDB = require("./config/db");
-
-connectDB();
 
 // View engine
 app.set('view engine', 'ejs');
@@ -33,4 +21,5 @@ app.use((req, res) => {
 app.listen(process.env.PORT || 3000, () =>
   console.log("Server running on port 3000")
 );
+
 
