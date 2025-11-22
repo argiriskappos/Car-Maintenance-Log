@@ -18,10 +18,12 @@ app.set("views", path.join(__dirname, "views"));
 const recordRoutes = require("./routes/records");
 
 // Mount records routes on homepage
-app.use("/", recordRoutes);
+app.use("/records", recordRoutes);
+
 
 // Listen on Render port or local 3000
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, "0.0.0.0", () => {
   console.log(`Server running on port ${PORT}`);
 });
+
