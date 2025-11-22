@@ -1,6 +1,6 @@
 const express = require("express");
 const router = express.Router();
-const Record = require("../models/records"); // your MongoDB model
+const Record = require('../models/MaintenanceRecord');
 
 // Homepage shows all records
 router.get("/", async (req, res) => {
@@ -21,4 +21,5 @@ router.post("/", async (req, res) => {
 });
 
 module.exports = router;
+
 
