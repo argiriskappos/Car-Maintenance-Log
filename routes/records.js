@@ -1,13 +1,23 @@
-const express = require('express');
+const express = require("express");
 const router = express.Router();
-const ctrl = require('../controllers/recordsController');
+const Record = require("../models/record"); // your MongoDB model
 
-router.get('/records', ctrl.index);
-router.get('/records/new', ctrl.newForm);
-router.post('/records', ctrl.create);
-router.get('/records/:id', ctrl.show);
-router.get('/records/:id/edit', ctrl.editForm);
-router.put('/records/:id', ctrl.update);
-router.delete('/records/:id', ctrl.delete);
+// Homepage shows all records
+router.get("/", async (req, res) => {
+  const records = await Record.find({});
+  res.render("records/index", { records });
+});
+
+// Form to add a new record
+router.get("/new", (req, res) => {
+  res.render("records/new");
+});
+
+// Add new record
+router.post("/", async (req, res) => {
+  const record = new Record(req.body.record);
+  await record.save();
+  res.redirect("/"); // back to homepage
+});
 
 module.exports = router;
