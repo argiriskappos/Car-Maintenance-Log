@@ -17,7 +17,7 @@ app.set("views", path.join(__dirname, "views"));
 app.get("/", async (req, res) => {
   const Record = require('./models/MaintenanceRecord'); // make sure path is correct
   const records = await Record.find({});
-  res.render("index", { records }); // render index.ejs
+  res.render("records/index", { records });
 });
 
 // Import routes
@@ -32,5 +32,6 @@ const PORT = process.env.PORT || 3000;
 app.listen(PORT, "0.0.0.0", () => {
   console.log(`Server running on port ${PORT}`);
 });
+
 
 
