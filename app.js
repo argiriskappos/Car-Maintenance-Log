@@ -1,4 +1,3 @@
-require('dotenv').config();
 const express = require("express");
 const path = require("path");
 const methodOverride = require("method-override");
@@ -9,17 +8,18 @@ const app = express();
 // Connect to MongoDB
 connectDB();
 
-// View engine
-app.set("view engine", "ejs");
-app.set("views", path.join(__dirname, "views"));
+// Use Render's PORT or fallback locally
+const PORT = process.env.PORT || 3000;
 
 // Middleware
 app.use(express.urlencoded({ extended: true }));
 app.use(methodOverride("_method"));
-app.use(express.static(path.join(__dirname, "public")));
 
-const PORT = process.env.PORT || 3000;
+app.get("/", (req, res) => {
+  res.send("Car Maintenance Log Running");
+});
 
-app.listen(PORT, () => {
+// Tell Express to listen on Render's port
+app.listen(PORT, "0.0.0.0", () => {
   console.log(`Server running on port ${PORT}`);
 });
