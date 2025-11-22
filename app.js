@@ -1,7 +1,7 @@
 const express = require("express");
-const connectDB = require("./config/db");
-const methodOverride = require("method-override");
 const path = require("path");
+const methodOverride = require("method-override");
+const connectDB = require("./config/db");
 
 const app = express();
 
@@ -11,15 +11,17 @@ connectDB();
 // Middleware
 app.use(express.urlencoded({ extended: true }));
 app.use(methodOverride("_method"));
+app.set("view engine", "ejs");
+app.set("views", path.join(__dirname, "views"));
 
-// Simple test route
-app.get("/", (req, res) => {
-  res.send("Car Maintenance Log Running");
-});
+// Import routes
+const carRoutes = require("./routes/cars");
 
-// Listen on Render port or 3000 locally
+// Mount routes on the homepage
+app.use("/", carRoutes);
+
+// Listen on Render port or local 3000
 const PORT = process.env.PORT || 3000;
-console.log("App started, about to listen on port", PORT);
 app.listen(PORT, "0.0.0.0", () => {
   console.log(`Server running on port ${PORT}`);
 });
