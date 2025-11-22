@@ -15,11 +15,12 @@ router.get("/new", (req, res) => {
 
 // Add new record
 router.post("/", async (req, res) => {
-  const record = new Record(req.body.record);
+  const record = new Record(req.body); // use req.body directly
   await record.save();
-  res.redirect("/"); // back to homepage
+  res.redirect("/");
 });
 
 module.exports = router;
+
 
 
