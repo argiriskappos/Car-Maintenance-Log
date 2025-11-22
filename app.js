@@ -15,10 +15,10 @@ app.set("view engine", "ejs");
 app.set("views", path.join(__dirname, "views"));
 
 // Import routes
-const carRoutes = require("./routes/cars");
+const recordRoutes = require("./routes/records");
 
-// Mount routes on the homepage
-app.use("/", carRoutes);
+// Mount records routes on homepage
+app.use("/", recordRoutes);
 
 // Listen on Render port or local 3000
 const PORT = process.env.PORT || 3000;
