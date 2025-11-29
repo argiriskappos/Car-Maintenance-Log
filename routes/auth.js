@@ -1,15 +1,14 @@
-// routes/auth.js
 const express = require('express');
 const router = express.Router();
 const passport = require('passport');
 
-// Google
+// Google OAuth
 router.get('/auth/google', passport.authenticate('google', { scope: ['profile','email'] }));
 router.get('/auth/google/callback',
   passport.authenticate('google', { failureRedirect: '/', failureMessage: true }),
   (req, res) => res.redirect('/records'));
 
-// GitHub
+// GitHub OAuth
 router.get('/auth/github', passport.authenticate('github'));
 router.get('/auth/github/callback',
   passport.authenticate('github', { failureRedirect: '/', failureMessage: true }),
