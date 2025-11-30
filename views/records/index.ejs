@@ -1,14 +1,14 @@
 <%- include("./partials/header") %>
 
-<div class="container" style="margin-top: 40px;">
+<div class="container home-hero">
   <h1>Car Maintenance Log</h1>
-  <p>Track your oil changes, repairs, and vehicle maintenance history easily.</p>
+  <p class="lead">Track your oil changes, repairs, and maintenance history easily.</p>
 
   <% if (!currentUser) { %>
-    <a class="btn btn-primary" href="/auth/google">Sign in with Google</a>
-    <a class="btn btn-dark" href="/auth/github">Sign in with GitHub</a>
+    <a class="btn btn-primary btn-lg" href="/auth/google">Sign in with Google</a>
+    <a class="btn btn-dark btn-lg" href="/auth/github">Sign in with GitHub</a>
   <% } else { %>
-    <a class="btn btn-success" href="/records">View My Records</a>
+    <a class="btn btn-success btn-lg" href="/records">View My Records</a>
   <% } %>
 </div>
 
